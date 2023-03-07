@@ -1,6 +1,6 @@
 const express = require('express')
 const app=express();
-const port=9000;
+const bodyParser=require('body-parser')
 const { connectToDb, getDb } = require('./db')
 const { ObjectId } = require('mongodb')
 
@@ -21,19 +21,23 @@ connectToDb((err) => {
 // ejs setup
 app.set('view engine', 'ejs')
 
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
 app.get('/', (req, res) => {
 
-    let blogs = []
-    db.collection('blogs')
-        .find()
-        .sort({ _id: -1 })
-        .forEach(blog => blogs.push(blog))
-        .then(() => {
+    // let blogs = []
+    // db.collection('blogs')
+    //     .find()
+    //     .sort({ _id: -1 })
+    //     .forEach(blog => blogs.push(blog))
+    //     .then(() => {
 
-            res.render('index', { articles: blogs })
-        })
-        .catch((err) => {
-            res.status(500).json({ error: 'could not get data' })
-        })
+    //         res.render('index', { articles: blogs })
+    //     })
+    //     .catch((err) => {
+    //         res.status(500).json({ error: 'could not get data' })
+    //     })
+    res.render('newPage');
 
 })
