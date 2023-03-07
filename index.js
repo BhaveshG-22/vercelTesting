@@ -21,7 +21,7 @@ connectToDb((err) => {
 // ejs setup
 app.set('view engine', 'ejs')
 
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.get('/', (req, res) => {
@@ -38,6 +38,6 @@ app.get('/', (req, res) => {
     //     .catch((err) => {
     //         res.status(500).json({ error: 'could not get data' })
     //     })
-    res.render('newPage');
+    res.render('./views/newPage')
 
 })
